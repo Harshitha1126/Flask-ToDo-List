@@ -1,32 +1,24 @@
-# Todo
+# Dockerfile
 
-A simple todo-list web application which provides the following functionality:  
-• A list of todos  
-• Create a new todo item  
-• Mark a todo item as done or undone  
-• Edit a todo item  
-• Delete a todo item  
-• Mark everything as completed  
+add below lines to app.py file to work in browser.
 
-The project makes use of Python3, Flask, SQLite, Bootstrap and JQuery.
+    if __name__ == "__main__":
+    app.run(host="0.0.0.0", port=5000, debug=True)The project makes use of Python3, Flask, SQLite, 
+    Bootstrap and JQuery.
 
-## Getting Started
+## Modify requirement.txt file
 
-git clone https://github.com/zacclery/Flask-ToDo-List.git && cd todo_app
+    MarkupSafe==2.0.1  
 
-##### Create virtualenv and activate
+## Build the docker image from docker file
 
-pip3 install -r requirements.txt
+    docker build -t flask-app:latest .
 
-export FLASK_APP=app.py  
-flask run  #flask run --host=0.0.0.0 (if require server to be publicly accessible)  
+## Run images to create docker containers
 
-Navigate to: http://localhost:5000/
+    docker run -d -p 5000:5000 flask-app:latest
 
-## Authors
+##push the image to docker hub
 
-**Zac Clery**
-
-## License
-
-This project is licensed under the MIT License
+     docker image tag flask-app:latest harshitha1126/flaskapp-basicimg:latest
+     docker push harshitha1126/flaskapp-basicimg:latest
